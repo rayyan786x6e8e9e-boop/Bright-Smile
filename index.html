@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrightSmile Dental Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --sky:#eaf3fc;
+    --blue:#1565c0;
+    --blue-dark:#0d47a1;
+    --navy:#0a2540;
+    --mint:#2dd4bf;
+    --text:#0a2540;
+    --text-dim:#5b6b7c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    line-height:1.65;
+  }
+  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:700;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 24px 100px;
+    background: linear-gradient(180deg, var(--sky) 0%, var(--white) 75%);
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    border:1px solid rgba(21,101,192,0.18);
+    border-radius:100px;
+    padding:8px 18px;
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--blue);
+    margin-bottom:26px;
+    box-shadow:0 4px 14px rgba(21,101,192,0.08);
+  }
+  .badge .dot{ width:7px;height:7px;border-radius:50%;background:var(--mint); }
+  .hero h1{
+    font-size:clamp(2.4rem, 8vw, 4rem);
+    line-height:1.12;
+    color:var(--navy);
+    max-width:640px;
+  }
+  .hero h1 .accent{ color:var(--blue); position:relative; }
+  .smile-line{
+    display:block;
+    width:120px;
+    height:14px;
+    margin:18px auto 0;
+  }
+  .hero p.tagline{
+    margin-top:24px;
+    max-width:460px;
+    color:var(--text-dim);
+    font-size:1.08rem;
+    font-weight:400;
+  }
+  .cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .btn{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:0.92rem;
+    font-weight:600;
+    text-decoration:none;
+    padding:15px 32px;
+    border-radius:12px;
+    color:var(--white);
+    background:var(--blue);
+    box-shadow: 0 8px 20px rgba(21,101,192,0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.25s ease;
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn:hover, .btn:focus-visible{
+    background:var(--blue-dark);
+    transform:translateY(-2px);
+    box-shadow: 0 12px 26px rgba(21,101,192,0.34);
+    outline:none;
+  }
+  .btn:active{
+    transform:translateY(0) scale(0.96);
+    box-shadow: 0 4px 12px rgba(21,101,192,0.3);
+  }
+  .btn .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.5);
+    transform:scale(0);
+    animation: ripple-out 0.6s ease-out;
+    pointer-events:none;
+  }
+  @keyframes ripple-out{
+    to{ transform:scale(1); opacity:0; }
+  }
+  .btn.outline{
+    background:var(--white);
+    color:var(--blue);
+    border:1.5px solid rgba(21,101,192,0.35);
+    box-shadow:none;
+  }
+  .btn.outline:hover, .btn.outline:focus-visible{
+    background:var(--sky);
+    color:var(--blue-dark);
+  }
+  .btn.outline .ripple{ background:rgba(21,101,192,0.15); }
+
+  /* ===== SECTION SHARED ===== */
+  section{ padding:88px 24px; position:relative; }
+  .section-head{ text-align:center; margin-bottom:52px; }
+  .eyebrow{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    letter-spacing:0.18em;
+    color:var(--blue);
+    font-size:0.72rem;
+    text-transform:uppercase;
+    font-weight:700;
+    display:block;
+  }
+  .section-head h2{ font-size:clamp(1.9rem,6vw,2.6rem); margin-top:10px; color:var(--navy); }
+  .section-head p{ color:var(--text-dim); max-width:480px; margin:14px auto 0; }
+
+  /* ===== SERVICES ===== */
+  .services-grid{
+    max-width:760px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  @media(min-width:640px){ .services-grid{ grid-template-columns:1fr 1fr; } }
+  .service-card{
+    background:var(--white);
+    border-radius:18px;
+    padding:28px 24px;
+    border:1px solid rgba(21,101,192,0.12);
+    box-shadow:0 4px 18px rgba(10,37,64,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 26px rgba(10,37,64,0.09);
+  }
+  .service-card .icon{
+    width:44px; height:44px;
+    border-radius:12px;
+    background:var(--sky);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--blue);
+    font-size:1.3rem;
+    margin-bottom:14px;
+  }
+  .service-card h3{ font-size:1.2rem; color:var(--navy); }
+  .service-card p{ margin-top:8px; color:var(--text-dim); font-size:0.95rem; font-weight:400; }
+
+  /* ===== FAQ (signature) ===== */
+  .faq-wrap{ max-width:640px; margin:0 auto; }
+  .faq-item{
+    border-bottom:1px solid rgba(21,101,192,0.14);
+  }
+  .faq-q{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:22px 4px;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--navy);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+  }
+  .faq-q .plus{
+    flex-shrink:0;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--sky);
+    color:var(--blue);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+    transition: transform 0.25s ease;
+  }
+  .faq-item.open .faq-q .plus{ transform:rotate(45deg); background:var(--blue); color:var(--white); }
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-a p{
+    padding:0 4px 22px;
+    color:var(--text-dim);
+    font-size:0.97rem;
+    max-width:540px;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact{ text-align:center; background:var(--sky); }
+  .contact-card{
+    max-width:420px;
+    margin:0 auto;
+    background:var(--white);
+    border-radius:20px;
+    padding:38px 28px;
+    box-shadow:0 10px 30px rgba(10,37,64,0.1);
+  }
+  .contact-card .line{
+    display:block;
+    margin:14px 0;
+    font-size:1.05rem;
+    color:var(--navy);
+    font-weight:500;
+    word-break:break-word;
+  }
+  .contact-card a{ color:var(--blue); text-decoration:none; border-bottom:1.5px solid rgba(21,101,192,0.25); }
+  .contact-card a:hover, .contact-card a:focus-visible{ color:var(--blue-dark); outline:none; }
+  .contact-card .label{
+    display:block;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    font-weight:600;
+    margin-top:20px;
+  }
+
+  footer{
+    text-align:center;
+    padding:34px 20px;
+    color:var(--text-dim);
+    font-size:0.85rem;
+    background:var(--white);
+    border-top:1px solid rgba(21,101,192,0.1);
+  }
+  footer .built-by{ display:block; margin-top:8px; opacity:0.7; font-size:0.78rem; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="badge"><span class="dot"></span> Accepting New Patients</div>
+  <h1>Healthy smiles, <span class="accent">gently cared for.</span></h1>
+  <svg class="smile-line" viewBox="0 0 120 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2 Q60 16 118 2" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <p class="tagline">Modern dental care focused on comfort, clarity, and honest treatment — for the whole family.</p>
+  <div class="cta-row">
+    <a href="#contact" class="btn">Book Appointment</a>
+    <a href="#faq" class="btn outline">Have Questions?</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head">
+    <span class="eyebrow">SERVICES</span>
+    <h2>Care for every stage.</h2>
+    <p>From routine checkups to same-day emergencies, our team handles it with care.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon">🦷</div>
+      <h3>General Checkups</h3>
+      <p>Routine exams and cleanings to keep small issues from becoming big ones.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">✨</div>
+      <h3>Teeth Whitening</h3>
+      <p>Safe, professional whitening treatments with visible results in one visit.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">🩹</div>
+      <h3>Emergency Care</h3>
+      <p>Same-day appointments for pain, chips, and urgent dental issues.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">👨‍👩‍👧</div>
+      <h3>Family Dentistry</h3>
+      <p>Gentle, patient care for kids and adults, all under one roof.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-head">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions patients ask us.</h2>
+    <p>Straight answers, no jargon.</p>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q">Do you accept walk-ins? <span class="plus">+</span></button>
+      <div class="faq-a"><p>We prioritize scheduled appointments, but we hold a few same-day slots for urgent cases. Call ahead and we'll fit you in when we can.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How often should I get a checkup? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Most patients should visit every six months for a cleaning and exam. If you have ongoing issues, we may recommend more frequent visits.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Is teeth whitening safe? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Yes — our in-office whitening is monitored and safe for enamel when done professionally, unlike some over-the-counter kits.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Do you treat children? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Absolutely. Our team is experienced with young patients and focuses on making visits calm and comfortable from the very first appointment.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What if I'm nervous about the dentist? <span class="plus">+</span></button>
+      <div class="faq-a"><p>You're not alone — we take extra time to explain every step, and there's no judgment if you need a moment before we start.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="section-head">
+    <span class="eyebrow">GET IN TOUCH</span>
+    <h2>Book your visit.</h2>
+  </div>
+  <div class="contact-card">
+    <span class="line">📞 <a href="tel:+917991123921">+91 79911 23921</a></span>
+    <span class="line">✉️ <a href="mailto:rayyan786x6e8e9e@gmail.com">rayyan786x6e8e9e@gmail.com</a></span>
+    <span class="label">MON – SAT, 9AM – 6PM</span>
+  </div>
+</section>
+
+<footer>
+  BrightSmile Dental Clinic
+  <span class="built-by">Site by Raytech Studio</span>
+</footer>
+
+<script>
+  document.querySelectorAll('.btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var rect = btn.getBoundingClientRect();
+      var ripple = document.createElement('span');
+      var size = Math.max(rect.width, rect.height) * 1.4;
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+      btn.appendChild(ripple);
+      setTimeout(function(){ ripple.remove(); }, 600);
+    });
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+  </html>
